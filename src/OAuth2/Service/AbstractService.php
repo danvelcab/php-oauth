@@ -185,7 +185,7 @@ abstract class AbstractService extends BaseAbstractService implements ServiceInt
     /**
      * {@inheritdoc}
      */
-    public function requestAccessToken($code, $state = null)
+    public function requestAccessToken($code, $name = null, $state = null)
     {
         if (null !== $state) {
             $this->validateAuthorizationState($state);
@@ -206,7 +206,11 @@ abstract class AbstractService extends BaseAbstractService implements ServiceInt
         );
 
         $token = $this->parseAccessTokenResponse($responseBody);
-        $this->storage->storeAccessToken($this->service(), $token);
+        if($name == null){
+            $this->storage->storeAccessToken($this->service(), $token);
+        }else{
+            $this->storage->storeAccessToken($name, $token);
+        }
 
         return $token;
     }
