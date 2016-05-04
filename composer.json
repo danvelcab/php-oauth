@@ -26,7 +26,7 @@
             "role": "Developer of UserData package"
         }
     ],
-    "minimum-stability": "dev-custom",
+    "minimum-stability": "dev-master",
     "require": {
         "php": ">=5.4.0",
 	"ext-reflection": "*",
